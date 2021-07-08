@@ -36,6 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
 
+
 class Game(models.Model):
     """Model for saving games scores for each user."""
     tower_blocks_score = models.IntegerField(default=0)
