@@ -35,3 +35,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+class Game(models.Model):
+    """Model for saving games scores for each user."""
+    tower_blocks_score = models.IntegerField(default=0)
+    bounce_score = models.IntegerField(default=0)
+    kill_birds_score = models.IntegerField(default=0)
+    snake_score = models.IntegerField(default=0)
+    inventory_score = models.IntegerField(default=0)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    last_updated = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.email
